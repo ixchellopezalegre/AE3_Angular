@@ -1,0 +1,33 @@
+<h1>Listado de videojuegos</h1>
+
+<div>
+    <label for="titulo">ID</label>
+    <div>
+        <!-- Operador ternario para no mostrar 0-->
+        <input id="titulo" disabled="disabled" value="{{id==0?'':id}}"/>
+    </div>
+
+    <label for="nombre">Título</label>
+    <div>
+        <input id="titulo" [(ngModel)]="titulo"/>
+        <!--<span class="rojo" [hidden]="nombreObligatorioOculto">El nombre es obligatorio</span>-->
+    </div>    
+
+    <label for="company">Com</label>
+
+    <div>
+        <input id="company" [(ngModel)]="company"/>
+        <!--<span class="rojo" [hidden]="universoObligatorioOculto">El universo es obligatorio</span>-->
+    </div>
+    
+</div>    
+
+<br/>
+
+<app-videojuego 
+    *ngFor="let v of listaVideojuegos" (click)="seleccionar(v)" [videojuego]="v" >
+</app-videojuego>
+
+<div *ngIf="listaVideojuegos.length == 0" class="rojo">
+    No se han encontrado heroes
+</div>
