@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { ProfileComponent } from './componentes/profile/profile.component';
 import { VideojuegoComponent } from './componentes/videojuego/videojuego.component';
@@ -20,7 +19,6 @@ import { VideojuegosComponent } from './componentes/videojuegos/videojuegos.comp
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
     HomeComponent,
     ProfileComponent,
     VideojuegoComponent,
