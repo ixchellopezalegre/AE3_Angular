@@ -1,0 +1,20 @@
+#NavBar CSS in-line
+
+nav a{
+    font-size:14px;
+} 
+    
+nav li{
+    display:inline-block;
+    width:10%;
+    padding:5px 10px;
+    background-color:rgb(14, 136, 181);
+    border:1px solid #000;
+    text-align:center;
+    color:rgb(0, 0, 0);
+}
+    
+nav li:hover{
+    background-color:rgb(236, 240, 159);
+    color:rgb(0, 0, 0);
+}

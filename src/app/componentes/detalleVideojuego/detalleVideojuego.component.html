@@ -1,0 +1,25 @@
+<h2>
+ Detalles de los videojuegos
+</h2>
+
+<!-- Mostrando los valores pasados -->
+<div>
+  <p>Valores pasados</p>
+  <p>Nombre: {{titulo}}</p>
+  <p>Compañía: {{company}}</p>
+  <p>Imagen: {{img}}</p>
+  <p>Valoración Media: {{valMedia}}</p>
+
+</div>
+
+
+<!-- Mostrando los valores pasados por queryParams-->
+<div class="rojo" *ngIf="mostrar">
+  {{parametroQuery1}} - {{parametroQuery2}}
+</div>
+<br/>
+
+<!-- Routing o navegación declarativa desde la vista -->
+<div>
+  <button routerLink="/home">Volver a lista de Videojuegos</button>
+</div>

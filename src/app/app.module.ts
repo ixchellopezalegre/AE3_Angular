@@ -11,11 +11,12 @@ import { HomeComponent } from './componentes/home/home.component';
 import { ProfileComponent } from './componentes/profile/profile.component';
 import { VideojuegoComponent } from './componentes/videojuego/videojuego.component';
 import { VideojuegosComponent } from './componentes/videojuegos/videojuegos.component';
+import { NavBarComponent } from './componentes/navBar/navBar.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -23,7 +24,8 @@ import { VideojuegosComponent } from './componentes/videojuegos/videojuegos.comp
     ProfileComponent,
     VideojuegoComponent,
     VideojuegosComponent,
-  ],
+      NavBarComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,1 +1,64 @@
-<p>home works!</p>
+<h1>Bienvenido usuario</h1>
+
+<!-- Routing o navegación declarativa desde la vista -->
+<div>
+  <span>Navegando desde la vista: </span>
+  <button routerLink="/videojuego">Ir a Componente 1</button>
+</div>
+
+<hr/>
+<!-- 
+  Routing o navegación declarativa desde la vista con parametros
+  Ojo, son PathParams(/lobezno/marvel), no son QueryParams(?nombre=lobezno&universo=marvel)
+
+  Tiene que estar definida una ruta en el fichero "app-routing.module.ts" 
+  que expresamente indique que hay parámetros, además de configurar
+  el componente que lo recibe (componete1.component.ts)
+-->
+<div>
+  <span>Navegando desde la vista mandando información: </span>
+  <button routerLink="/videojuego/Fallout 3/Bethesda">Ir al Detalle de Fallout</button>
+</div>
+
+<hr/>
+<!--
+Navegación declarativa pasando parámetros de manera dinámica, usaremos la directiva [routerLink]
+en combinación con Two Way Binding de los formularios
+-->
+<div>
+  <span>Titulo: </span>
+  <input [(ngModel)]="titulo">
+  <span>Compañía: </span>
+  <input [(ngModel)]="company">
+</div>
+<div>
+  <span>Pasando valores desde la vista [routerLink]: </span>
+  <button [routerLink]="[ '/componente1', titulo, company ]">Detalle de {{titulo}}</button>
+</div>
+
+<!--
+Navegación declarativa haciendo el enrutamiento a nivel programático, debemos de
+crear un método que realice la lógica y llamarlo desde la plantilla
+-->
+<div>
+  <span>Pasando valores desde la vista de manera programática: </span>
+  <button (click)="routingProgramatico()">Componente 1 Programático</button>
+</div>
+
+<!-- 
+Parametros de Query, usaremos la directiva [queryParams]. De esta manerá solo hace falta
+tener declarado en en 'app.routing' el path, no los parametros de query
+Ej: /componente1?parametro1=natasha&parametro2=marvel
+-->
+<div>
+  <span>Pasando valores desde la vista mediante parametros de query: </span>
+  <button [routerLink]="[ '/detalle']" 
+          [queryParams]="{parametro1:titulo,parametro2:company}">Componente 1 Query Param</button>
+</div>
+
+<!-- Parametros de Query y de manera programática -->
+<div>
+  <span>Pasando valores desde la vista mediante parametros de query y programáticamente: </span>
+  <button (click)="routingProgramaticoQueryParam()">Componente 1 Query Param Programática</button>
+</div>
+<br/>

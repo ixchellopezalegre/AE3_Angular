@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //Importamos la entidad Videojuego.
 import { Videojuego } from 'src/app/entidades/videojuego';
+import { VideojuegoService } from 'src/app/services/videojuego.service';
 
 
 @Component({
@@ -15,7 +16,6 @@ import { Videojuego } from 'src/app/entidades/videojuego';
 export class VideojuegosComponent implements OnInit {
 
   listaVideojuegos : Videojuego[] = []
-  videojuego : Videojuego | null = null
 
   //Datos que recogeremos del formulario:
   id : number = 0
@@ -24,19 +24,16 @@ export class VideojuegosComponent implements OnInit {
   valMedia : number = 0
   img : string = ""
 
-  constructor() {
-    let videojuego : Videojuego = new Videojuego("Final Fantasy VI", "Square Enix", 8.4, "src/img")
-    this.listaVideojuegos.push(videojuego);
-    videojuego = new Videojuego("Monkey Island", "LucasArts", 8.9, "src/img")
-    this.listaVideojuegos.push(videojuego);
-    videojuego = new Videojuego("Grim Fandango", "LucasArts", 7.9, "src/img")
-    this.listaVideojuegos.push(videojuego);
-    videojuego = new Videojuego("Fallout 3", "Bethesda", 7.4, "src/img")
-    this.listaVideojuegos.push(videojuego);
-    videojuego = new Videojuego("Persona4", "Square Enix", 8.9, "src/img")
-    this.listaVideojuegos.push(videojuego);
-    videojuego = new Videojuego("The Elder Scrolls V: Skyrim", "Bethesda", 8.9, "src/img")
-   }
+  //Mediante la inyección de dependencias, cuando angular cree este componente, 
+  //le pasará algún objeto de tipo PersonaService que hayamos declarado en nuestra aplicación.
+  //Como efectivamente hemos declarado la clase PersonaService anotada con @Inyectable, 
+  //le pasará dicho objeto para que podamos usarlo.
+ 
+  constructor(private  _videojuegoService : VideojuegoService) {
+   this._videojuegoService = _videojuegoService
+   //Cargamos la lista de heroes al inicializar el componente
+   this.listaVideojuegos = _videojuegoService.listar()
+  }
   
 
   /**
@@ -53,9 +50,11 @@ export class VideojuegosComponent implements OnInit {
       //let copia : Heroe = new Heroe(heroe.nombre, heroe.universo)
       this.id = videojuego.id
       this.titulo = videojuego.titulo
-      this.company = videojuego.company
+      this.valMedia = videojuego.valMedia
   
     }
+
+
 
   ngOnInit() {
   }
