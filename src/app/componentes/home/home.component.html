@@ -27,10 +27,11 @@ en combinación con Two Way Binding de los formularios
 -->
 <div>
   <span>Titulo: </span>
-  <input [(ngModel)]="titulo">
+  <input name="titulo" [(ngModel)]="titulo">
   <span>Compañía: </span>
   <input [(ngModel)]="company">
 </div>
+
 <div>
   <span>Pasando valores desde la vista [routerLink]: </span>
   <button [routerLink]="[ '/componente1', titulo, company ]">Detalle de {{titulo}}</button>
