@@ -9,13 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 
 export class DetalleVideojuegoComponent implements OnInit {
   
+    id : number = 0;
     titulo : string = ''
     company : string = ''
     img : string =''
     valMedia : number = 0;
   
-    parametroQuery1: string = ''
-    parametroQuery2: string = ''
     mostrar = false
   
     //INYECCIÓN DE DEPENDENCIAS EN ANGULAR
@@ -32,24 +31,15 @@ export class DetalleVideojuegoComponent implements OnInit {
       console.log("Creando Componente1")
       console.log(`nombre: ${this.titulo}`)
   
-      //Accedemos a los valores contenidos en la ruta por el nombre que declaramos
-      //ruta.snapshot.params['dato'], siendo "dato" el identificador que hemos declarado
-      //en el fichero de routing (:dato)    
-      //En nuestro caso:
-      this.titulo = route.snapshot.params["titulo"]
-      this.company = route.snapshot.params["company"]
+      
   
       //Para recuperar los parametros de query es parecido al caso anterior
       //pero usando "queryParams"
-      this.parametroQuery1 = route.snapshot.queryParams["parametro1"]
-      this.parametroQuery2 = route.snapshot.queryParams["parametro2"]
-      console.log(this.parametroQuery1)
+      this.id = route.snapshot.queryParams["id"]
+      this.titulo = route.snapshot.queryParams["titulo"]
+      this.valMedia = route.snapshot.queryParams["valMedia"]
+      console.log(this.titulo)
   
-      //Solo mostramos el div con los query params en caso de que me llegue información
-      //por dichos query params
-      if(this.parametroQuery1 != null){
-        this.mostrar = true
-      }
     }
   
     ngOnInit() {

@@ -100,7 +100,7 @@ export class VideojuegoService {
 
   /**
    * Método que borra un heroe a partir de un id
-   * @param id del heroe que queremos borrar
+   * @param id del heroe qvideojuego que queremos borrar
    * @returns true en caso de que el id exista en la lista y se haya podido borrar, false en 
    * caso contrario.
    */
@@ -115,9 +115,9 @@ export class VideojuegoService {
   }
 
   /**
-   * Metodo que devuelve un Heroe de la lista a partir de su id
+   * Metodo que devuelve un videojuego de la lista a partir de su id
    * @param id 
-   * @returns el heroe en caso de que hayamos encontrado su id, null en caso de que no exista el id
+   * @returns el videojuego en caso de que hayamos encontrado su id, null en caso de que no exista el id
    * en la lista.
    */
   public acceder(id : number) : Videojuego | null{    
@@ -130,8 +130,8 @@ export class VideojuegoService {
   }
 
   /**
-   * Método que devuelve todos los heroes en una lista
-   * @returns la lista de heroes
+   * Método que devuelve todos los videojuegos en una lista
+   * @returns la lista de videojuegos
    */
   public listar(): Videojuego[]{
     return this.listaVideojuegos

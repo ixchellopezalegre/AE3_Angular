@@ -43,20 +43,27 @@ export class VideojuegosComponent implements OnInit {
    * y de borrar
    * @param Videojuego representa el Videojuego que queremos cargar en el formulario
    */
-   public seleccionar(videojuego : Videojuego) : void{
+   public seleccionar(idVideojuego : number) : void{
   
-      console.log("Seleccionando...")
+      console.log("Seleccionar -> Seleccionando..." + idVideojuego)
+      
+      let videojuego = this._videojuegoService.acceder(idVideojuego)
+
+      if(videojuego != null){
+        this.id = videojuego.id
+        this.titulo = videojuego.titulo      
+        this.company = videojuego.company
+        this.valMedia = videojuego.valMedia
+        this.img = videojuego.img
+      console.log("Seleccionar -> Videojuego encontrado")
   
-      //let copia : Heroe = new Heroe(heroe.nombre, heroe.universo)
-      this.id = videojuego.id
-      this.titulo = videojuego.titulo
-      this.valMedia = videojuego.valMedia
-  
+    }else{
+      console.log("Seleccionar -> Videojuego  no encontrado")
     }
-
-
+   }
 
   ngOnInit() {
+    
   }
 
 }

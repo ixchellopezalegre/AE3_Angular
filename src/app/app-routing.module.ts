@@ -14,6 +14,7 @@ const routes: Routes = [
     path : '', //En este caso decimos el componente que mostraremos por defecto
     component : HomeComponent
   },
+
   {
     path : 'detalle', //cuando definimos el 'path' no puede empezar por '/'
     component : DetalleVideojuegoComponent

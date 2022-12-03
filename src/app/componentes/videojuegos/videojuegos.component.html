@@ -13,19 +13,25 @@
         <!--<span class="rojo" [hidden]="nombreObligatorioOculto">El nombre es obligatorio</span>-->
     </div>    
 
-    <label for="company">Valoración</label>
+    <label for="valMedia">Valoración</label>
 
     <div>
-        <input id="company" [(ngModel)]="valMedia"/>
+        <input id="valMedia" [(ngModel)]="valMedia"/>
         <!--<span class="rojo" [hidden]="universoObligatorioOculto">El universo es obligatorio</span>-->
     </div>
     
-</div>    
+</div>   
+
+<div>
+    <span>Pasando valores desde la vista mediante parametros de query: </span>
+    <button [routerLink]="[ '/detalle']" 
+            [queryParams]="{id:id}">Detalle de {{titulo}}</button>
+  </div>
 
 <br/>
 
 <app-videojuego 
-    *ngFor="let v of listaVideojuegos" (click)="seleccionar(v)" [videojuego]="v" >
+    *ngFor="let v of listaVideojuegos" (click)="seleccionar(v.id)" [videojuego]="v" >
 </app-videojuego>
 
 <div *ngIf="listaVideojuegos.length == 0" class="rojo">
