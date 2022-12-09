@@ -24,14 +24,19 @@ export class VideojuegosComponent implements OnInit {
   valMedia : number = 0
   img : string = ""
 
+  videojuegoSelect?: Videojuego;
+    onSelect(videojuego: Videojuego): void {
+  this.videojuegoSelect = videojuego;
+}
+
   //Mediante la inyección de dependencias, cuando angular cree este componente, 
-  //le pasará algún objeto de tipo PersonaService que hayamos declarado en nuestra aplicación.
-  //Como efectivamente hemos declarado la clase PersonaService anotada con @Inyectable, 
+  //le pasará algún objeto de tipo VideojuegoService que hayamos declarado en nuestra aplicación.
+  //Como efectivamente hemos declarado la clase VideojuegoService anotada con @Inyectable, 
   //le pasará dicho objeto para que podamos usarlo.
  
   constructor(private  _videojuegoService : VideojuegoService) {
    this._videojuegoService = _videojuegoService
-   //Cargamos la lista de heroes al inicializar el componente
+   //Cargamos la lista de videojuegos al inicializar el componente
    this.listaVideojuegos = _videojuegoService.listar()
   }
   
@@ -62,6 +67,7 @@ export class VideojuegosComponent implements OnInit {
     }
    }
 
+  
   ngOnInit() {
     
   }

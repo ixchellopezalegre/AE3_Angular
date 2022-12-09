@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "272d4cce-f7a6-46ed-b478-e5e4aef84d6c"
+    "analytics": "9c207928-1c98-48f4-8630-0c8e6d4798cd"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AE3_Angular": {
+    "AE3_Videojuegos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ae3-angular",
+            "outputPath": "dist/ae3-videojuegos",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "AE3_Angular:build:production"
+              "browserTarget": "AE3_Videojuegos:build:production"
             },
             "development": {
-              "browserTarget": "AE3_Angular:build:development"
+              "browserTarget": "AE3_Videojuegos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AE3_Angular:build"
+            "browserTarget": "AE3_Videojuegos:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "AE3_Angular"
+  "defaultProject": "AE3_Videojuegos"
 }

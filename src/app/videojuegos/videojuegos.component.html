@@ -1,0 +1,21 @@
+<h2>Mis Videojuegos</h2>
+
+<div>
+  <label for="new-videojuego">Título del Videojuego: </label>
+  <input id="new-videojuego" #videojuegoTitulo />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(videojuegoTitulo.value); videojuegoTitulo.value=''">
+    Añadir Videojuego
+  </button>
+</div>
+
+<ul class="videojuegos">
+  <li *ngFor="let videojuego of videojuegos">
+    <a routerLink="/detalle/{{videojuego.id}}">
+      <span class="id">{{videojuego.id}}</span> {{videojuego.titulo}}
+    </a>
+    <button type="button" class="delete" title="delete videojuego"
+      (click)="delete(videojuego)">x</button>
+  </li>
+</ul>

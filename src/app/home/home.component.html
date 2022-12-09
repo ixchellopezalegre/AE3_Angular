@@ -1,0 +1,9 @@
+<h2>Home</h2>
+<div class="videojuegos-menu">
+  <a *ngFor="let videojuego of videojuegos"
+      routerLink="/detalle/{{videojuego.id}}">
+      Id: {{videojuego.id}}
+      Título: {{videojuego.titulo}}
+      Valoración Media: {{videojuego.notaMedia}}
+  </a>
+</div>
