@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400&family=Nobile&family=Open+Sans:ital@1&display=swap');
+body{
+    background-color: #F3F7F8;
+    font-family: 'Assistanrt',sans-serif;
+    margin: 0;
+    padding: 24px;;
+}
+
+h1{
+    font-family: 'Nobile',sans-serif;
+    font-style: bold;
+    font-weight: 500;
+    text-align: center;
+    font-size: 230%;
+    color: #0F4D79;
+    margin:0;
+    padding: 24px 0;;
+}
+h2{
+    font-family: 'Nobile',sans-serif;
+    font-style: bold;
+    font-weight: 500;
+    text-align: left;
+    margin: 0;
+    padding: 16px 0px;
+  }
+
+  ul{
+    list-style: none;
+    margin: 0 0 1rem;
+  }
+
+  li{
+    font-size: 0.8rem;
+  }
+  a{ 
+    text-decoration: none;
+    }
+    /* link no visitado */
+    a:link {
+        color: black;
+    }
+    /* link no visitado */
+    a:visited {
+        color:black;
+    }
+    button{
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 1px;
+      border-radius: 32px;
+      border: none;
+      
+      text-transform: uppercase;
+      /*Para que sea responsive*/
+      padding: 0.5rem 1rem;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .btn{
+      background: #9dd3fd;
+      color:#FFFFFF
+    }
+    .btn:hover{
+      background: #0F4D79;
+      /*Mejor que sombra*/
+      filter: brightness(130%);
+    } 

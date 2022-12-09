@@ -109,7 +109,7 @@ export class VideojuegoService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.mensaje}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -117,7 +117,7 @@ export class VideojuegoService {
   }
 
   /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.mensajeService.add(`VideojuegoService: ${message}`);
+  private log(mensaje: string) {
+    this.mensajeService.add(`VideojuegoService: ${mensaje}`);
   }
 }

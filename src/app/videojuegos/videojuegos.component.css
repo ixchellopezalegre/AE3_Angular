@@ -1,4 +1,64 @@
-.videojuegos {
+
+.videojuegos{
+  display: flex;
+  flex-direction: column;
+}
+.nuevo-videojuego{
+  padding: 8px;
+}
+.nuevo-videojuego input{
+  padding: 0 8px;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: center;
+  background:linear-gradient(0deg, rgba(15, 77, 121, 0.1), rgba(15, 77, 121, 0.1)), #F2FFFF;
+  border-radius:245px;
+  padding: 16px;
+}
+.botones{
+  display: flex;
+  flex-direction: column;
+  gap:8px
+}
+li{
+  font-size: 1rem;
+  border-radius: 1px;
+  text-decoration: none;
+  display: inline-block;
+  justify-content: center;
+  color: #002428;
+  text-align: left;
+  width: 100%;
+  min-width: 70px;
+  box-sizing: border-box;
+
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+@media (max-width: 650px) {
+  ul{
+    
+  flex-wrap: wrap;
+  }
+  li {
+    width: 80%;
+    box-sizing: content-box;
+    font-size: 100%;
+  }
+ .botones{
+    width: 60%;
+  }
+}
+
+
+
+/* .videojuegos {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
@@ -86,4 +146,4 @@
   button.delete:hover {
     background-color: #525252;
     color: white;
-  }
+   } */

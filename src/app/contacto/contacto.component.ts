@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent implements OnInit {
+  
+  user?: string;
+  email?: string;
+  mensaje?: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(value: any){  
+
+}
 }

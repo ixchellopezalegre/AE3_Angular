@@ -1,0 +1,22 @@
+
+nav{
+    display: flex;
+    font-display: row;
+    border-radius: 15px;
+    margin: 0;
+    padding: 0px 0.8rem;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(103,177,244,0.32488329804578087) 0%, rgb(139, 232, 215) 100%);
+    gap: 8px;
+}
+nav a{
+    text-decoration: dotted;
+    padding: 8px;
+    color:#003861;
+
+}
+nav a:hover{
+    background: linear-gradient(90deg, rgba(41, 79, 114, 0.325) 0%, rgba(14, 93, 78, 0.641) 100%);
+    color:#ffffff;
+    text-decoration: underline;
+}

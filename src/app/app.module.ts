@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './servicios/in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,6 +18,7 @@ import { MensajesComponent } from './mensajes/mensajes.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     MensajesComponent,
     ContactoComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,26 @@
-<div *ngIf="videojuego">
-    <h2>Detalles de {{videojuego.titulo | uppercase}} </h2>
-    <div>
-      <span>id: </span>{{videojuego.id}}
-    </div>
-    <div>
-      <span>Título: </span>{{videojuego.titulo}}
-    </div>
-    <div>
-      <span>Compañía: </span>{{videojuego.company}}
-    </div>
-    <div>
-      <span>Valoración media: </span>{{videojuego.notaMedia}}
-    </div>
-    <div>
-      <span>Foto: </span>
-      <img src="{{videojuego.imagen}}" alt="imagen de {{videojuego.titulo}}">
-    </div>
-</div>
-    
+<app-navbar></app-navbar>
+<app-mensajes></app-mensajes>
+<ul class="container" *ngIf="videojuego">
 
-  <!-- <div *ngIf="videojuego">
-    <h2>{{videojuego.titulo | uppercase}} Detalles</h2>
-    <div>
-      <span>id: </span>{{videojuego.id}}
-    </div>
-    <div>
-      <label for="videojuego-titulo">Titulo: </label>
-      <input id="videojuego-titulo" [(ngModel)]="videojuego.titulo" placeholder="Título del videojuego"/>
-    </div> -->
+    <ul class="detalles">
+      <li>Detalles de {{videojuego.titulo | uppercase}} </li>
+        <li>
+          <span>id: </span>{{videojuego.id}}
+        </li>
+        <li>
+          <span>Título: </span>{{videojuego.titulo}}
+        </li>
+        <li>
+          <span>Compañía: </span>{{videojuego.company}}
+        </li>
+        <li>
+          <span>Valoración media: </span>{{videojuego.notaMedia}}
+        </li>
+    </ul>
+    <li>
+      <div class="cont-img">
+        <img src="{{videojuego.imagen}}" alt="imagen de {{videojuego.titulo}}">
+      </div>
+    </li>
+</ul>
+

@@ -1,21 +1,23 @@
+<app-navbar></app-navbar>
+
 <h2>Mis Videojuegos</h2>
-
-<div>
-  <label for="new-videojuego">Título del Videojuego: </label>
-  <input id="new-videojuego" #videojuegoTitulo />
-
+<app-mensajes></app-mensajes>
+<div class="nuevo-videojuego">
+  <label for="new-videojuego">Añade un videojuego nuevo a tu lista:  </label>
+  <input id="new-videojuego" #videojuegoTitulo placeholder="Introduce el titulo"/>
   <!-- (click) passes input value to add() and then clears the input -->
   <button type="button" class="add-button" (click)="add(videojuegoTitulo.value); videojuegoTitulo.value=''">
     Añadir Videojuego
   </button>
 </div>
+<div class="videojuegos">
+  <ul *ngFor="let videojuego of videojuegos">
+      <li>Id: {{videojuego.id}}</li>
+      <li>Título: {{videojuego.titulo}}</li>
+      <li>Valoración Media: {{videojuego.notaMedia}}</li>
+      <li class="botones"><button class="btn" routerLink="/detalle/{{videojuego.id}}">Detalles</button>
+      <button type="button" class="delete" title="delete videojuego"
+      (click)="delete(videojuego)">Eliminar</button></li>
+  </ul>
+</div>
 
-<ul class="videojuegos">
-  <li *ngFor="let videojuego of videojuegos">
-    <a routerLink="/detalle/{{videojuego.id}}">
-      <span class="id">{{videojuego.id}}</span> {{videojuego.titulo}}
-    </a>
-    <button type="button" class="delete" title="delete videojuego"
-      (click)="delete(videojuego)">x</button>
-  </li>
-</ul>
