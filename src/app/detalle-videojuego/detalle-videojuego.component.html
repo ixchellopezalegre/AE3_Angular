@@ -3,24 +3,29 @@
 <ul class="container" *ngIf="videojuego">
 
     <ul class="detalles">
-      <li>Detalles de {{videojuego.titulo | uppercase}} </li>
+      <li>
+        <span class="imp">Detalles de </span>
+        <span class="titulo">{{videojuego.titulo | uppercase}}</span> 
+      </li>
         <li>
-          <span>id: </span>{{videojuego.id}}
+          <span class="imp">ID:</span>{{videojuego.id}}
         </li>
         <li>
-          <span>Título: </span>{{videojuego.titulo}}
+          <span class="imp">Título: </span>{{videojuego.titulo}}
         </li>
         <li>
-          <span>Compañía: </span>{{videojuego.company}}
+          <span class="imp">Compañía: </span>{{videojuego.company}}
         </li>
         <li>
-          <span>Valoración media: </span>{{videojuego.notaMedia}}
+          <span class="imp">Valoración media: </span>{{videojuego.notaMedia}}
+        </li>
+        <li>
+          <button class="btn" routerLink="/videojuegos">Volver atrás</button>
         </li>
     </ul>
-    <li>
-      <div class="cont-img">
+    <li class="cont-img">
         <img src="{{videojuego.imagen}}" alt="imagen de {{videojuego.titulo}}">
-      </div>
     </li>
 </ul>
+
 
