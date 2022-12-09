@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { LoginComponent } from '../login/login.component';
+import { UsersService } from '../servicios/user.service';
 
 @Component({
   selector: 'app-contacto',
@@ -7,11 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactoComponent implements OnInit {
   
-  user?: string;
-  email?: string;
-  mensaje?: string;
+  username?:string;
+  email?:string;
 
-  constructor() { }
+  constructor(private logueado: LoginComponent) { 
+    this.username=logueado.username;
+    this.email=logueado.email;
+  }
 
   ngOnInit(): void {
   }

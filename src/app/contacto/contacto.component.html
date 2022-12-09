@@ -3,7 +3,7 @@
 <!-- Este es un Formulario Angular tipo Template-driven
 porque es simple y sencillo -->
 
-<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)">
+<form  (ngSubmit)="onSubmit">
     <div class="form-group">
       <input type="text" placeholder="What is your name?"  clas="form-control" name="name" [(ngModel)]="user" required/>
     </div>
@@ -13,8 +13,23 @@ porque es simple y sencillo -->
     <div class="form-group">
       <textarea rows="4" cols="40" placeholder="Please enter your message*" class="form-control" name="message" [(ngModel)]="mensaje" required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
+
+  <div class="container">
+    <form>
+      <input type="text" placeholder="{{user.}}"  clas="form-control" name="name" [(ngModel)]="user" required/>
+  
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+  
+  
+      <label for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+  
+      <input type="submit" value="Submit">
+    </form>
+  </div>
   {{user}}
   {{email}}
   {{mensaje}}

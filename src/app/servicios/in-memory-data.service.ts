@@ -61,10 +61,12 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     const users =[
       {email: "irene_guion@gmail.com",
-      password: "dreamDaddy5"
+      password: "dreamDaddy5",
+      username: "Irene_Uncharted"
       },
       {email:"ruben_lju@gmail.com",
-      password: "Kallisti"
+      password: "Kallisti",
+      username: "Ruben_lj8"
       }
     ];
     return {videojuegos, users};

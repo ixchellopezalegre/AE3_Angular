@@ -11,8 +11,8 @@ import { MensajeService } from './mensaje.service';
 @Injectable({ providedIn: 'root' })
 export class VideojuegoService {
 
-  private videojuegosUrl = 'api/videojuegos';  // URL to web api
-
+   // URL a la web API (en este caso al servicio in memory data)
+  private videojuegosUrl = 'api/videojuegos'; 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -21,7 +21,7 @@ export class VideojuegoService {
     private http: HttpClient,
     private mensajeService: MensajeService) { }
 
-  /** GET heroes from the server */
+  /** GET videojuegos del servidor */
   getVideojuegos(): Observable<Videojuego[]> {
     return this.http.get<Videojuego[]>(this.videojuegosUrl)
       .pipe(
@@ -30,21 +30,8 @@ export class VideojuegoService {
       );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
-  getVideojuegoNo404<Data>(id: number): Observable<Videojuego> {
-    const url = `${this.videojuegosUrl}/?id=${id}`;
-    return this.http.get<Videojuego[]>(url)
-      .pipe(
-        map(videojuegos => videojuegos[0]), // returns a {0|1} element array
-        tap(v => {
-          const outcome = v ? 'Encontrado' : 'No se ha encontrado';
-          this.log(`${outcome} videojuego id=${id}`);
-        }),
-        catchError(this.handleError<Videojuego>(`getVideojuego id=${id}`))
-      );
-  }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** Metodo GET para el videjojuego por ID*/
   getVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
     return this.http.get<Videojuego>(url).pipe(
@@ -53,23 +40,10 @@ export class VideojuegoService {
     );
   }
 
-  /* GET heroes whose name contains search term */
-  buscarVideojuegos(term: string): Observable<Videojuego[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.http.get<Videojuego[]>(`${this.videojuegosUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
-         this.log(`Hemos encontrado videojuegos que coinciden con "${term}"`) :
-         this.log(`No emos encontrado videojuegos que coinciden con "${term}"`)),
-      catchError(this.handleError<Videojuego[]>('buscarVideojuegos', []))
-    );
-  }
 
-  //////// Save methods //////////
+  //////// Metodos para añadir y eliminar un videojuego //////////
 
-  /** POST: add a new hero to the server */
+  /** POST: añadir un videojuego nuevo al servidor */
   addVideojuego(videojuego: Videojuego): Observable<Videojuego> {
     return this.http.post<Videojuego>(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
       tap((newVideojuego: Videojuego) => this.log(`Añadido videojuego w/ id=${newVideojuego.id}`)),
@@ -77,7 +51,7 @@ export class VideojuegoService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE: borrar el videojuego del servidorr */
   deleteVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
 
@@ -87,13 +61,6 @@ export class VideojuegoService {
     );
   }
 
-  /** PUT: update the hero on the server */
-  updateVideojuego(videojuego: Videojuego): Observable<any> {
-    return this.http.put(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
-      tap(_ => this.log(`Se ha actualizado el videojuego id=${videojuego.id}`)),
-      catchError(this.handleError<any>('updateVideojuego'))
-    );
-  }
 
   /**
    * Handle Http operation that failed.

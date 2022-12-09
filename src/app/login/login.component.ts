@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../entidades/user';
+import { MensajeService } from '../servicios/mensaje.service';
 import { UsersService } from '../servicios/user.service';
 
 @Component({
@@ -8,8 +9,9 @@ import { UsersService } from '../servicios/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    opcion:number = 0;
+ 
     users: User[] = [];
+
     constructor(private usersService: UsersService) { }
   
     ngOnInit(): void {
@@ -19,11 +21,22 @@ export class LoginComponent implements OnInit {
       this.usersService.getUsers()
       .subscribe(users => this.users = users);
     }
+    
 
-    email : string ="";
+    private _email: string = "";
+
+    public get email(): string {
+
+    return this._email;
+    }
+
+    public set email(value: string) {
+      this._email = value;
+    }
     password : string ="";
+    username : string = "";
+    
     show: boolean= false;
-
     valido: boolean= false;
     
     submit(){
@@ -39,6 +52,7 @@ export class LoginComponent implements OnInit {
           console.log(this.email + " es el introducido " + user.email + " es el que coincide en nuestra bbdd")
           this.valido = true;
           alert("Login success");
+          this.username = user.username;
           window.location.replace("/home");
         };
         
