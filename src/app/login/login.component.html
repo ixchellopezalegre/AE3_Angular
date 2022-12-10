@@ -5,10 +5,14 @@
     <li><b> Pass:</b> {{user.password}}</li>
 </ul>
 
+<!-- Formulario simple con dos campos y un boton que permite un inicio de sesion simulado, pues no existe la sesion aun. -->
   <form class="login-form">
+
     <input type="email" name="email" placeholder="Email" [(ngModel)] ="email">
     <input type="password" name="password" placeholder="Contraseña" [(ngModel)] ="password">
-    <span class="error" *ngIf="!control">El usuario o la contraseña son incorrectos </span>
+    
+    <!-- El mensaje de error solo aparece si la validación no es correcta -->
+    <span *ngIf="!control" class="error" >El usuario o la contraseña son incorrectos </span>
     <button class="btn" type="submit" (click)="login()"> Iniciar Sesión</button>
   </form>
 </div>

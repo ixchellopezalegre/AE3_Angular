@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+//Clase que se encarga de contener en su HTMLlas rutas de navegacion que usará el usuario 
+
 export class NavbarComponent implements OnInit {
 
   constructor() {}

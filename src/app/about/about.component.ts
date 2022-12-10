@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
+
+/**
+ * Clase que devuelve el componente about, que recoge informacion sobre la aplicación y sus desarolladores
+ */
 export class AboutComponent implements OnInit {
 
   constructor() { }

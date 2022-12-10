@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 //Para NgModule importamos esto de Angular:
 import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './servicios/in-memory-data.service';
 
@@ -36,9 +35,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
+    // El modulo  HttpClientInMemoryWebApiModule intercepta peticiones HTTP
+    // y devuelve respuestas simuladas del servidor.
+    // Cuando un servidor real esté listo para recibir peticiones, se podrá quitar.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

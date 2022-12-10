@@ -1,27 +1,43 @@
-# AE3Videojuegos
+# AE3 Angular🚀️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+Actividad realizada por:
 
-## Development server
+*Ixchel López* :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Todos los componentes
+* Servicios
+* Entidades
+* Routing
+* Login
 
-## Code scaffolding
+*David López* :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Sección about
 
-## Build
+## Estructura general
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+Me gustaría pensar en esta actividad como mi primera actividad con Angular, que me ha permitido entender un poco como funciona, pues me ha abierto un mundo muy amplio que no he tenido tiempo de explorar en este trimestre y espero continuar en los próximos meses.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Verás que aunque era opcional he usado la parte de cliente HTTP para simular la base de datos con una WEB API, me ha parecido más interesante de cara a la aplicación real de estos conocimientos. Para ello he echado mano principalmente de tus apuntes y la página web oficial de [Angular](https://angular.io/).
 
-## Running end-to-end tests
+Hay muchas cosas que estan muy simuladas aun pero espero mejorarlo conforme mi conocimiento avance.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Simulación del servidor
 
-## Further help
+Para empezar, he tenido que instalar un módulo de ANGULAR diferente a los que hemos visto en clase para el. A diferencia de tu ejemplo de clienteHTTP yo he usado una WEB API a través de un servicio que he creado llamado ****in-memory-app.service.ts****.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![captura-api](src\assets\documento-img\api.png)
+
+Para usar este recorso he tenido que instalar el paquete ****in-memory-app-web-api**** al tener Angular 13 que nos recomendaste en tus videos, nos da un error de compatibilidad. He buscado en stackOverFlow y se resuelve pidiendo el paquete para nuestra version en concreto. Luego he tenido que usar --force para que sobreescribiera los cambios. El problema se hubiese solucionado, entiendo, instalando la ultima version de Angular también.
+
+![captura-api](src\assets\documento-img\api-solved.png)
+
+En el archivo **app.module.ts** he colocado las importaciones necesarias para crear la BBDD simulada, de esta manera:
+
+![captura-app-module](src\assets\documento-img\app-module2.png)
+
+*Las importaciones necesarias para la simulación en app.module.ts*
+
+![captura-app-module](src\assets\documento-img\app-module1.png)
