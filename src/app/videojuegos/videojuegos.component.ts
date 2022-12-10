@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Videojuego } from '../entidades/videojuego';
 import { VideojuegoService } from '../servicios/videojuego.service';
@@ -9,15 +10,24 @@ import { VideojuegoService } from '../servicios/videojuego.service';
   styleUrls: ['./videojuegos.component.css']
 })
 export class VideojuegosComponent implements OnInit {
-
+  control :boolean= false;
+  username : string | undefined;
   videojuegos: Videojuego[] = [];
+ 
 
-  constructor(private videojuegoService: VideojuegoService) { }
+  constructor(private videojuegoService: VideojuegoService,
+    private routeUser: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getUserName()
     this.getVideojuegos();
   }
 
+  getUserName():void{
+    if (this.username = this.routeUser.snapshot.paramMap.get('username')!){
+      this.control=true;
+    };
+  }
   getVideojuegos(): void {
     this.videojuegoService.getVideojuegos()
     .subscribe(videojuegos => this.videojuegos = videojuegos);

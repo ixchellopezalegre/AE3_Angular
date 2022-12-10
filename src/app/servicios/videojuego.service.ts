@@ -11,8 +11,8 @@ import { MensajeService } from './mensaje.service';
 @Injectable({ providedIn: 'root' })
 export class VideojuegoService {
 
-   // URL a la web API (en este caso al servicio in memory data)
-  private videojuegosUrl = 'api/videojuegos'; 
+  private videojuegosUrl = 'api/videojuegos';  // URL to web api
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -21,7 +21,7 @@ export class VideojuegoService {
     private http: HttpClient,
     private mensajeService: MensajeService) { }
 
-  /** GET videojuegos del servidor */
+  /** GET heroes from the server */
   getVideojuegos(): Observable<Videojuego[]> {
     return this.http.get<Videojuego[]>(this.videojuegosUrl)
       .pipe(
@@ -30,8 +30,21 @@ export class VideojuegoService {
       );
   }
 
+  /** GET hero by id. Return `undefined` when id not found */
+  getVideojuegoNo404<Data>(id: number): Observable<Videojuego> {
+    const url = `${this.videojuegosUrl}/?id=${id}`;
+    return this.http.get<Videojuego[]>(url)
+      .pipe(
+        map(videojuegos => videojuegos[0]), // returns a {0|1} element array
+        tap(v => {
+          const outcome = v ? 'Encontrado' : 'No se ha encontrado';
+          this.log(`${outcome} videojuego id=${id}`);
+        }),
+        catchError(this.handleError<Videojuego>(`getVideojuego id=${id}`))
+      );
+  }
 
-  /** Metodo GET para el videjojuego por ID*/
+  /** Metodo GET para el videjojuego que devuelve 404 cuando no lo encuentra */
   getVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
     return this.http.get<Videojuego>(url).pipe(
@@ -61,7 +74,13 @@ export class VideojuegoService {
     );
   }
 
-
+  /** PUT: update the hero on the server */
+  updateVideojuego(videojuego: Videojuego): Observable<any> {
+    return this.http.put(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
+      tap(_ => this.log(`Se ha actualizado el videojuego id=${videojuego.id}`)),
+      catchError(this.handleError<any>('updateVideojuego'))
+    );
+  }
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -83,7 +102,7 @@ export class VideojuegoService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a VideojuegoService un nmensaje con el MessageService */
   private log(mensaje: string) {
     this.mensajeService.add(`VideojuegoService: ${mensaje}`);
   }

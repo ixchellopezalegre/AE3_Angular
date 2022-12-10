@@ -1,13 +1,14 @@
-<div class="login">
-  <h2>Usuarios</h2>
-  <p class="subtitulo">Estos son los usuarios disponibles y sus contraseñas:</p>
-  <ul *ngFor="let user of users">
-    <li>Usuario: {{user.email}}</li>
-    <li>Pass: {{user.password}}</li>
-  </ul>
-  <form>
+<div>
+  <h2>Usuarios:</h2>
+<ul *ngFor="let user of users">
+    <li><b>Email:</b>  {{user.email}}</li>
+    <li><b> Pass:</b> {{user.password}}</li>
+</ul>
+
+  <form class="login-form">
     <input type="email" name="email" placeholder="Email" [(ngModel)] ="email">
     <input type="password" name="password" placeholder="Contraseña" [(ngModel)] ="password">
+    <span class="error" *ngIf="!control">El usuario o la contraseña son incorrectos </span>
     <button class="btn" type="submit" (click)="login()"> Iniciar Sesión</button>
   </form>
 </div>

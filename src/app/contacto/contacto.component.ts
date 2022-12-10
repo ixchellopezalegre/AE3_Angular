@@ -10,18 +10,21 @@ import { UsersService } from '../servicios/user.service';
 })
 export class ContactoComponent implements OnInit {
   
-  username?:string;
+  nombre?:string;
   email?:string;
+  mensaje?:string;
 
-  constructor(private logueado: LoginComponent) { 
-    this.username=logueado.username;
-    this.email=logueado.email;
+  constructor() { 
+
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(value: any){  
-
+  onSubmit(){  
+    alert(`Hemos enviado tu mensaje ${this.nombre}`);
+    this.nombre='';
+    this.email='';
+    this.mensaje='';
 }
 }

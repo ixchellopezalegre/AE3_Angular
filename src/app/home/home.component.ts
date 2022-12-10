@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { Videojuego } from '../entidades/videojuego';
-import { VideojuegoService } from '../servicios/videojuego.service';
+import { User } from '../entidades/user';
+import { LoginService } from '../servicios/login.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +9,15 @@ import { VideojuegoService } from '../servicios/videojuego.service';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-  videojuegos: Videojuego[] = [];
-
-  constructor(private videojuegoService: VideojuegoService) { }
+  activos: User[] = [];
+  control:boolean = false;
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.getVideojuegos();
+    this.getUsuarioActivo();
   }
-
-  getVideojuegos(): void {
-    this.videojuegoService.getVideojuegos()
-      // .subscribe(videojuegos => this.videojuegos = videojuegos.slice(1, 5));
-      .subscribe(videojuegos => this.videojuegos = videojuegos);
+  getUsuarioActivo(): void {
+    this.loginService.getActivos().subscribe(activos => this.activos =activos);
+    this.control=true;
   }
 }

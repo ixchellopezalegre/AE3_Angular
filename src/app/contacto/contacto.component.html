@@ -1,38 +1,13 @@
 <app-navbar></app-navbar>
 
-<!-- Este es un Formulario Angular tipo Template-driven
-porque es simple y sencillo -->
-
-<form  (ngSubmit)="onSubmit">
-    <div class="form-group">
-      <input type="text" placeholder="What is your name?"  clas="form-control" name="name" [(ngModel)]="user" required/>
-    </div>
-    <div class="form-group">
-      <input name="emailaddress" placeholder="What is your email?*" class="form-control" type="email" name="email" [(ngModel)]="email" required/>
-    </div>
-    <div class="form-group">
-      <textarea rows="4" cols="40" placeholder="Please enter your message*" class="form-control" name="message" [(ngModel)]="mensaje" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" >Submit</button>
+<div class="container">
+  <form>
+    <label for="username">Tu nombre</label>
+    <input type="text" placeholder="¿Como te llamas?"  clas="form-cont" name="username" [(ngModel)]="nombre" required/> 
+    <label for="email">Tu email</label>
+    <input type="email" placeholder="¿Cual es tu correo?" class="form-cont"name="email" [(ngModel)]="email" required/>
+    <label for="mensaje">Subject</label>
+    <textarea class="textarea" name="mensaje" placeholder="Escribe tu mensaje" [(ngModel)]="mensaje"></textarea>
+    <button type="submit" value="Submit"  class="btn" (click)="(onSubmit())">Enviar</button>
   </form>
-
-  <div class="container">
-    <form>
-      <input type="text" placeholder="{{user.}}"  clas="form-control" name="name" [(ngModel)]="user" required/>
-  
-      <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-  
-  
-      <label for="subject">Subject</label>
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-  
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-  {{user}}
-  {{email}}
-  {{mensaje}}
-
-  <app-mensajes></app-mensajes>
-
+</div>

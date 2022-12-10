@@ -1,0 +1,28 @@
+.textarea{
+    display: flex;
+    margin: 1rem 0;
+    height: 200px;
+
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px
+    rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #f6f2f2aa;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    padding: 8px;
+}
+
+label{
+    padding-top: 8px;
+}
+.container form .btn{
+    margin: 8px 0;
+}

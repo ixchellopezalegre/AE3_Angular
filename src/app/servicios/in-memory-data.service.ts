@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { User } from '../entidades/user';
 import { Videojuego } from '../entidades/videojuego';
 
 @Injectable({
@@ -7,52 +8,52 @@ import { Videojuego } from '../entidades/videojuego';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let contador : number = 1;
-    
+    let contadorJuegos : number = 1;
+    let contadorUsuarios : number = 1;
     const videojuegos = [
-      { id: contador++, 
+      { id: contadorJuegos++, 
       titulo: 'Final Fantasy VI', 
       company: "Square Enix", 
       imagen: "../assets/img/finalFantasyVI.png", 
       notaMedia:8.4},
 
-    { id: contador++, 
+    { id: contadorJuegos++, 
       titulo: 'Monkey Island', 
       company: "LucasArts", 
       imagen: "../assets/img/monkeyisland.jpg", 
       notaMedia:8.9},
 
-    { id: contador++, 
+    { id: contadorJuegos++, 
       titulo: 'Fallout 3', 
       company: "Bethesda", 
       imagen: "../assets/img/fallout3.jpg", 
       notaMedia:7.4},
 
-    { id: contador++, 
+    { id: contadorJuegos++, 
       titulo: 'Persona4', 
       company: "Square Enix", 
       imagen: "../assets/img/persona4.jpg", 
       notaMedia:8.4},
 
-    { id: contador++, 
+    { id: contadorJuegos++, 
       titulo: 'Grim Fandango', 
       company: "LucasArts", 
       imagen: "../assets/img/grimfandango.jpg", 
       notaMedia:8.9},
 
-    { id: contador++, 
+    { id: contadorJuegos++, 
       titulo: 'Skyrim', 
       company: "Bethesda", 
       imagen: "../assets/img/skyrimV.jpg", 
       notaMedia:7.9},
     
-     { id: contador++, 
+     { id: contadorJuegos++, 
       titulo: 'The Last of Us II', 
       company: "Naughty Dog", 
       imagen: "../assets/img/tlof2.png", 
       notaMedia:8.9},
 
-     { id: contador++, 
+     { id: contadorJuegos++, 
       titulo: 'Dream Daddy', 
       company: "Game Grumps", 
       imagen: "../assets/img/dreamdaddy.jpg", 
@@ -60,15 +61,18 @@ export class InMemoryDataService implements InMemoryDbService {
     
     ];
     const users =[
-      {email: "irene_guion@gmail.com",
+      {id: contadorUsuarios++,
+      email: "irene_guion@gmail.com",
       password: "dreamDaddy5",
       username: "Irene_Uncharted"
       },
-      {email:"ruben_lju@gmail.com",
+      {id: contadorUsuarios++,
+      email:"ruben_lju@gmail.com",
       password: "Kallisti",
       username: "Ruben_lj8"
       }
     ];
+    
     return {videojuegos, users};
   }
   

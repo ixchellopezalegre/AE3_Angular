@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideojuegosComponent } from './videojuegos/videojuegos.component';
 import { DetalleVideojuegoComponent } from './detalle-videojuego/detalle-videojuego.component';
-import { HomeComponent } from './home/home.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { AboutComponent } from './about/about.component';
@@ -26,12 +25,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     VideojuegosComponent,
     DetalleVideojuegoComponent,
-    HomeComponent,
     MensajesComponent,
     ContactoComponent,
     AboutComponent,
-    LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+   LoginComponent,
   ],
   imports: [
     BrowserModule,

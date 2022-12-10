@@ -6,9 +6,7 @@
 .nuevo-videojuego{
   padding: 8px;
 }
-.nuevo-videojuego input{
-  padding: 0 8px;
-}
+
 ul{
   display: flex;
   flex-direction: row;

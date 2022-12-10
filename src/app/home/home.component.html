@@ -1,3 +1,18 @@
 <app-navbar></app-navbar>
+<app-mensajes></app-mensajes>
 <h2>Home</h2>
+<div *ngIf="control">
+    <ul *ngFor="let u of activos">
+        <li>
+            {{u.id}}
+        </li>
+        <li>
+            {{u.username}}
+        </li>
+        <li>
+            {{u.email}}
+        </li>
+
+    </ul>
+</div>
 
