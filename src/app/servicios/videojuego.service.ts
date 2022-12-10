@@ -10,9 +10,11 @@ import { MensajeService } from './mensaje.service';
 
 @Injectable({ providedIn: 'root' })
 export class VideojuegoService {
-
-  private videojuegosUrl = 'api/videojuegos';  // URL to web api
-
+  
+  //URL a la web API
+  private videojuegosUrl = 'api/videojuegos';  
+  
+  //El tipio de datos de la BBDD es de json, aunque sea una BBDD simulada.
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -24,7 +26,7 @@ export class VideojuegoService {
   /** 
    * Método que se encarga de buscar los videojuegos de la BBDD y mandar
    * un mensaje a través del servicio MensajeService con el resultado de la operación.
-   * @returns devuelve los videojuegos de la BBDD en memoria
+   * @returns Observable de los videojuegos de la BBDD en memoria
    */
   getVideojuegos(): Observable<Videojuego[]> {
     return this.http.get<Videojuego[]>(this.videojuegosUrl)
@@ -38,7 +40,7 @@ export class VideojuegoService {
    * un mensaje a través del servicio MensajeService con el resultado de la operación.
    * En este caso lo usaremos para que devuelva undefined en vez de dar eror 404 si 
    * no encuentra el videojuego.
-   * @returns devuelve el videojuego de la BBDD en memoria o undefined si no lo encuentra
+   * @returns Observable del videojuego de la BBDD en memoria o undefined si no lo encuentra
    */
   getVideojuegoNo404<Data>(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/?id=${id}`;
@@ -56,7 +58,7 @@ export class VideojuegoService {
    * Método que se encarga de buscar un videojuego por su ID en la BBDD y mandar
    * un mensaje a través del servicio MensajeService con el resultado de la operación.
    * En este caso devuelve 404 cuando no lo encuentra.
-   * @returns devuelve el videojuego de la BBDD en memoria o undefined si no lo encuentra
+   * @returns Observable del videojuego de la BBDD en memoria o undefined si no lo encuentra
    */
   getVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
@@ -69,58 +71,68 @@ export class VideojuegoService {
 
   //////// Metodos para añadir y eliminar un videojuego //////////
 
- /**A través del método POST, añade  un videojuego nuevo al servidor 
-  * Se usa através de videojuegosComponent
-  * @param videojuego 
-  * @returns 
+  /**A través del método POST, añade  un videojuego nuevo al servidor, desde VideojuegosComponent.
+   * Si se ha añadido el videojuego, se envia un mensaje
+  * @param videojuego el videojuego que se ha creado con el título insertado por el usuario
+  * @returns el 
   */
   addVideojuego(videojuego: Videojuego): Observable<Videojuego> {
     return this.http.post<Videojuego>(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
-      tap((newVideojuego: Videojuego) => this.log(`Añadido videojuego w/ id=${newVideojuego.id}`)),
+      tap((newVideojuego: Videojuego) => this.log(`Añadido videojuego con id=${newVideojuego.id}`)),
       catchError(this.handleError<Videojuego>('addVideojuego'))
     );
   }
 
-  /** DELETE: borrar el videojuego del servidorr */
+  /**A través del método DELETE, elimmina  un videojuego del servidor desde VideojuegosComponent.
+   * Si se ha eliminado el videojuego, se envia un mensaje
+  * @param videojuego el videojuego que se ha creado con el título insertado por el usuario
+  * @returns el observable de videojuego.
+  */
   deleteVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
 
     return this.http.delete<Videojuego>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`Videojuego borrado id=${id}`)),
+      tap(_ => this.log(`Videojuego borrado con id=${id}`)),
       catchError(this.handleError<Videojuego>('deleteVideojuego'))
     );
   }
 
-  /** PUT: update the hero on the server */
+  /**
+   * A través del método PUT, elimmina un videojuego del servidor desde VideojuegosComponent.
+   * @param videojuego el videojuego introducido por el usuario.
+   * @returns el observable de tipo <any>
+   */
   updateVideojuego(videojuego: Videojuego): Observable<any> {
     return this.http.put(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
-      tap(_ => this.log(`Se ha actualizado el videojuego id=${videojuego.id}`)),
+      tap(_ => this.log(`Se ha actualizado el videojuego con id=${videojuego.id}`)),
       catchError(this.handleError<any>('updateVideojuego'))
     );
   }
+
   /**
-   * Handle Http operation that failed.
-   * Let the app continue.
+   * Este método lidia con un error en la peticion HTTPP, para que la aplicación no se rompa si
+   * alguna de las peticiones no es satisfactoria.
    *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
+   * @param operation - nombre de la operación que ha fallado
+   * @param result - valor opcional para devolver como el resultado del observable 
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      // TODO: envia el error al la estructura remota de la consola
+      console.error(error); // Con esto se lo mandamos a la consola
 
-      // TODO: better job of transforming error for user consumption
+      // Con esto tranformamos el error en un mensaje para que pueda
+      // ser visualizado por el usuario en su interfaz.
       this.log(`${operation} failed: ${error.mensaje}`);
 
-      // Let the app keep running by returning an empty result.
+      // Permitimos continuar a la aplicacion devolviendo un resultado vacío.
       return of(result as T);
     };
   }
 
-  /** Log a VideojuegoService un nmensaje con el MessageService */
+  /** Mensaje de log de VideojuegoService a través de MensajeService */
   private log(mensaje: string) {
-    this.mensajeService.add(`VideojuegoService: ${mensaje}`);
+    this.mensajeService.add(`VideojuegoService dice: ${mensaje}`);
   }
 }

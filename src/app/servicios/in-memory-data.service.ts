@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { User } from '../entidades/user';
 import { Videojuego } from '../entidades/videojuego';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
+
+  /**
+   * Método propio de InMemoryDbService que simula una BBDD en memoria con una WEB API
+   * @returns -la lista de videojuegos, la lista de usuarios
+   */
   createDb() {
     let contadorJuegos : number = 1;
     let contadorUsuarios : number = 1;
@@ -76,13 +80,12 @@ export class InMemoryDataService implements InMemoryDbService {
     return {videojuegos, users};
   }
   
-
-
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
-  // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  /**
+   * Método que sobreescribe genId ede InMemoryDbService para asegurarse de que un videojuego siempre tiene un ID
+   * @param videojuegos - la lista de videojuegos en Memoria
+   * @returns el numero 1 si no existen videojuegos en memoria o si existen, el  id del ultimo videojuego
+   * de la lista más 1.
+   */
   genId(videojuegos: Videojuego[]): number {
     return videojuegos.length > 0 ? Math.max(...videojuegos.map(videojuego => 
       videojuego.id)) + 1 : 2;

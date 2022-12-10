@@ -7,7 +7,11 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
+  //El inicio de la aplicación lleva automáticamente al login.
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  //He decidido hacer un uso sencillo del enrutamiento por 
+  //parametro para transferir el userName a la pagina principal
   { path: 'videojuegos/:username', component: VideojuegosComponent },
   { path: 'detalle/:id', component: DetalleVideojuegoComponent },
   { path: 'videojuegos', component: VideojuegosComponent },
