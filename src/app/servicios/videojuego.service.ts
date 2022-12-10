@@ -21,7 +21,11 @@ export class VideojuegoService {
     private http: HttpClient,
     private mensajeService: MensajeService) { }
 
-  /** GET heroes from the server */
+  /** 
+   * Método que se encarga de buscar los videojuegos de la BBDD y mandar
+   * un mensaje a través del servicio MensajeService con el resultado de la operación.
+   * @returns devuelve los videojuegos de la BBDD en memoria
+   */
   getVideojuegos(): Observable<Videojuego[]> {
     return this.http.get<Videojuego[]>(this.videojuegosUrl)
       .pipe(
@@ -29,13 +33,18 @@ export class VideojuegoService {
         catchError(this.handleError<Videojuego[]>('getVideojuegos', []))
       );
   }
-
-  /** GET hero by id. Return `undefined` when id not found */
+  /** 
+   * Método que se encarga de buscar un videojuego por su ID en la BBDD y mandar
+   * un mensaje a través del servicio MensajeService con el resultado de la operación.
+   * En este caso lo usaremos para que devuelva undefined en vez de dar eror 404 si 
+   * no encuentra el videojuego.
+   * @returns devuelve el videojuego de la BBDD en memoria o undefined si no lo encuentra
+   */
   getVideojuegoNo404<Data>(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/?id=${id}`;
     return this.http.get<Videojuego[]>(url)
       .pipe(
-        map(videojuegos => videojuegos[0]), // returns a {0|1} element array
+        map(videojuegos => videojuegos[0]), // devuelve un  {0|1} elemento del array
         tap(v => {
           const outcome = v ? 'Encontrado' : 'No se ha encontrado';
           this.log(`${outcome} videojuego id=${id}`);
@@ -43,8 +52,12 @@ export class VideojuegoService {
         catchError(this.handleError<Videojuego>(`getVideojuego id=${id}`))
       );
   }
-
-  /** Metodo GET para el videjojuego que devuelve 404 cuando no lo encuentra */
+  /** 
+   * Método que se encarga de buscar un videojuego por su ID en la BBDD y mandar
+   * un mensaje a través del servicio MensajeService con el resultado de la operación.
+   * En este caso devuelve 404 cuando no lo encuentra.
+   * @returns devuelve el videojuego de la BBDD en memoria o undefined si no lo encuentra
+   */
   getVideojuego(id: number): Observable<Videojuego> {
     const url = `${this.videojuegosUrl}/${id}`;
     return this.http.get<Videojuego>(url).pipe(
@@ -56,7 +69,11 @@ export class VideojuegoService {
 
   //////// Metodos para añadir y eliminar un videojuego //////////
 
-  /** POST: añadir un videojuego nuevo al servidor */
+ /**A través del método POST, añade  un videojuego nuevo al servidor 
+  * Se usa através de videojuegosComponent
+  * @param videojuego 
+  * @returns 
+  */
   addVideojuego(videojuego: Videojuego): Observable<Videojuego> {
     return this.http.post<Videojuego>(this.videojuegosUrl, videojuego, this.httpOptions).pipe(
       tap((newVideojuego: Videojuego) => this.log(`Añadido videojuego w/ id=${newVideojuego.id}`)),
