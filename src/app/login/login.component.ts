@@ -19,21 +19,25 @@ export class LoginComponent implements OnInit {
     constructor(private usersService: UsersService,
                 private router: Router) { }
     
-    /**
-     * Método que se inciia con el inicio del servidor y obtiene todos los 
-     */            
+           
     ngOnInit(): void {
       this.getUsers();
     }
-    /**
-     * 
-     */
+
+     /**
+     * Método que se inciia con el inicio del servidor y obtiene todos los 
+     * usuarios registrados en la base de datos en in-memory-app
+     */ 
     getUsers() {
       this.usersService.getUsers()
       .subscribe(users => this.users = users);
     }
   
-
+    /**
+     * Método que comprueba si el usuario y la contraseña son correctos, recorriendo la lista
+     * de usuarios existentes en la BBDD. Si Son correctas redirige a la página principal
+     * que permite la navegación.
+     */
     login(){
       this.users.forEach(user => {
         if((this.email === user.email) && (this.password === user.password)){
